@@ -27,7 +27,7 @@ def turn(board)
   input = gets.strip
   index = input_to_index(input)
   if valid_move?(board, index)
-    move(board, index)
+    move(board, index, current_player(board))
     display_board(board)
   else
     turn(board)
@@ -42,6 +42,14 @@ def turn_count(board)
     end
   end
     count
+end
+
+def current_player(board)
+  if turn_count(board) % 2 == 0
+    return "X"
+  else
+    return "O"
+  end
 end
 
 WIN_COMBINATIONS = [
